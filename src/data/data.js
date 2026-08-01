@@ -36,7 +36,7 @@ export const personal = {
   role: "Java Full Stack Developer",
   tagline:
       "I build secure, scalable and user-friendly web applications using Java, Spring Boot and React.",
-  email: "aksuperhuman2603@gmail.com",
+  email: "akashravichandran2026@gmail.com ",
   phone: "+91 8778743353",
   location: "Tamil Nadu, India",
   experience: "Ready to Start",
