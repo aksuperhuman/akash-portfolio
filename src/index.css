@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-padding-top: 96px;
+}
+
+body {
+  @apply bg-bg text-white font-body antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(245, 180, 0, 0.35);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f5b400, #8a6300);
+  border-radius: 8px;
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient border wrapper */
+.gradient-border {
+  position: relative;
+  border-radius: 1.25rem;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(245, 180, 0, 0.6), rgba(245, 180, 0, 0) 40%, rgba(255, 255, 255, 0.08) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Eyebrow / code-comment label -- signature motif */
+.eyebrow {
+  @apply font-mono text-xs tracking-[0.25em] uppercase text-gold/80;
+}
+.eyebrow::before {
+  content: "// ";
+  color: rgba(245, 180, 0, 0.45);
+}
+
+/* Section number tag, styled like a code line number */
+.line-tag {
+  @apply font-mono text-[11px] text-white/30;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(90deg, #fff 0%, #f5b400 60%, #ffd866 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #f5b400;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@keyframes ping-once {
+  0% {
+    transform: scale(0);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.animate-ping-once {
+  animation: ping-once 0.6s ease-out;
+}
+
+/* Optional light mode toggle: lifts the base tone while keeping gold identity */
+.light-mode body {
+  background-color: #0f0f10;
+}
+.light-mode .glass {
+  background: rgba(255, 255, 255, 0.07);
+}
+.light-mode .glass-strong {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
